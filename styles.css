@@ -55,6 +55,7 @@
 
 .screen {
   box-sizing: border-box;
+  min-height: 87px;
   flex: 1 0 82%;
   border: solid 3px #CCC;
   margin: 2% 2% 8% 2%;
