@@ -19,6 +19,8 @@ const THE_DICTIONARY = {
         'clear': 'clear',
 }
 
+const screen = document.querySelector('.screen')
+
 function add(a, b){
   return a + b
 }
@@ -48,9 +50,16 @@ function operate(a, b, func){
   }
 }
 
+function clearScreen(){
+  screen.innerText = ''
+}
+
+
 function updateScreen(value){
   console.log(value.target.textContent)
-  const screen = document.querySelector('.screen')
+  if (screen.innerText.length > 11) {
+    return
+  }
   screen.innerText = `${screen.innerText}${value.target.textContent}`
 }
 
