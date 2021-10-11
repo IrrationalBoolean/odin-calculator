@@ -1,24 +1,3 @@
-const THE_DICTIONARY = {
-        'seven': 7,
-        'eight': 8,
-        'nine': 9,
-        'add': 'add',
-        'four': 4,
-        'five': 5,
-        'six': 6,
-        'minus': 'minus',
-        'one': 1,
-        'two': 2,
-        'three': 3,
-        'multiply': 'multiply',
-        'decimal': '.',
-        'zero': 0,
-        'delete': 'delete',
-        'divide': 'divide',
-        'equals': 'equals',
-        'clear': 'clear',
-}
-
 const screen = document.querySelector('.screen')
 const operands = []
 let operator = null
@@ -75,22 +54,23 @@ function operate(arr, func){
   }
 }
 
-function equals(e){
+function equals(){
   operands.push(grabValue())
-  console.log(checkOperands())
   if (checkOperands()){
     total = operate(operands, operator)
     console.log(total)
     operator = null
     clearScreen()
     screen.innerText = `${total}`.slice(0,12)
-    
   }
 }
 
 function pressOperator(e){
   let key = e.target.id
-  if (!checkOperands()) {
+  if (checkOperands()){
+    equals()
+    operator = key
+  } else if (!checkOperands()) {
     operands.push(grabValue())
     operator = key
     clearScreen()
@@ -98,7 +78,6 @@ function pressOperator(e){
     operate(operands, operator)
     operator = key
   } 
-  console.log([key, e, checkOperands()])
 }
 
 
